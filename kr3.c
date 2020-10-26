@@ -1,32 +1,22 @@
+//пример варианта 16-17
+//char * strnrev (char * dest,char * src,unsigned int n) – функция переворота,но в 
+//dest пишется неболее n байтов. Возвращает dest.
+   
 #include <stdio.h>
-
-char StrRev(char *dest,char * src, unsigned int namb){
+char StrRev(char *dest,char * src, unsigned int n){
 int i,l,j;
-char t;
-unsigned int d;
 i=0;
 l=0;
 while (src[l]!='\0'){
 l++;
 }
-j=l-1;
 
-while (i<j)
-{
-t=src[i];
-src[i]=src[j];
-src[j]=t;
-i++;j--;
+for (i=0,j=l-1;i<l;i++,j--){
+dest[i]=src[j];
 }
-d=0;
+dest[n+1]='\0';
 
-while (d<=namb)
-{
-dest[d]=src[d];
-
-d++;
-}
-return *dest;
+return dest;
 }
 
 int main()
@@ -34,11 +24,10 @@ int main()
 unsigned int n;
 char S[100];
 char re[100];
-fgets (S, 100, stdin);
+fgets (S, 100, stdin);//fgets(string,<сколько символов>,<откуда>)
 scanf("%d",&n);
 StrRev(re,S,n);
-re[n+1]='\0';
 printf ("%s\n", re);
-
+  
 return 0;
 }
